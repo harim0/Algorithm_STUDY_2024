@@ -10,7 +10,7 @@
 
 |          주차          |    날짜      |기출 유형                                                    | 문제명                                                      | 풀이여부 |       풀이 링크         |
 | --------------- | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | :--------: | -------- |
-| Week1 | 24.1.2<br /> |[백트래킹](https://www.acmicpc.net/step/34)                                          | [N과M](https://www.acmicpc.net/problem/15649)<br />[N-Queen](https://www.acmicpc.net/problem/9663)<br />[스도쿠](https://www.acmicpc.net/problem/2580)<br />[연산자 끼워넣기](https://www.acmicpc.net/problem/14888) | <br />        | <a href="./Week01">바로가기</a> |
+| Week01 | 24.01.02<br /> |[백트래킹](https://www.acmicpc.net/step/34)                                          | [N과M](https://www.acmicpc.net/problem/15649)<br />[N-Queen](https://www.acmicpc.net/problem/9663)<br />[스도쿠](https://www.acmicpc.net/problem/2580)<br />[연산자 끼워넣기](https://www.acmicpc.net/problem/14888) | <br />        | <a href="./Week01">풀이</a> |
 
 ### REFERENCE
 - https://github.com/Seongho0503/Algo_Study
