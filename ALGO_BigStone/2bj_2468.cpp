@@ -20,14 +20,16 @@ void dfs_rainy(int y, int x, int max_num){
         }
     }
 }
-// void display(){
-//     for(int i=0; i<N; i++){
-//         for(int j=0; j<N; j++){
-//             cout<<visited[i][j]<<" ";
-//         }
-//         cout<<endl;
-//     }
-// }
+void display(){
+    cout<<"---------\n";
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            cout<<visited[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"---------\n";
+}
 int rstMAX = 0;
 
 int main(){
@@ -42,11 +44,12 @@ int main(){
         }
     }
 
-    for(int num=min_n; num<max_n; num++){
+    for(int num=min_n-1; num<max_n; num++){ // ***no rainy case exist
         // int** visited=new int*[N];
         for(int y=0; y<N; y++) memset(visited[y], 0, N * sizeof(int)); 
 
         int rst = 0;
+        cout<<"rainy_num <= "<<num<<endl;
         for(int y=0; y<N; y++){
             // visited[y]=new int[N]{0,};
             for(int x=0; x<N; x++){
@@ -56,7 +59,7 @@ int main(){
                 }
             }
         }
-        // display();
+        display();
         if(rst>rstMAX) rstMAX = rst;
     }
     cout<<rstMAX;
