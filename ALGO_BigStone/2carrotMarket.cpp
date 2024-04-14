@@ -13,12 +13,12 @@ queue<pair<int,int>> Q;
 int h,w;
 
 void bfs_carrot(int init_x,int init_y){
-    Q.push(make_pair(init_y,init_x));
     visited[init_y][init_x]=1;
+    Q.push(make_pair(init_y,init_x));
     while(Q.size()){
         pair front = Q.front();
         Q.pop();
-        init_y = front.first;
+        init_y = front.first; // update
         init_x = front.second;
         for(int k=0; k<4; k++){
             int nx=init_x+dx[k];
