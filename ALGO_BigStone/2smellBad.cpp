@@ -26,7 +26,7 @@ int main(){
     cin>>w>>h;
 
     int **matrix = new int*[h];
-    int **visited = new int*[h];
+    int **visited = new int*[h]; 
     for(int i=0; i<h; i++){
         matrix[i] = new int[w];
         visited[i] = new int[w]{0,};
