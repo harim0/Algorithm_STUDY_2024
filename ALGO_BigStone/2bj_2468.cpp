@@ -30,6 +30,7 @@ void display(){
     }
     cout<<"---------\n";
 }
+
 int rstMAX = 0;
 
 int main(){
@@ -59,7 +60,7 @@ int main(){
                 }
             }
         }
-        display();
+        // display();
         if(rst>rstMAX) rstMAX = rst;
     }
     cout<<rstMAX;
