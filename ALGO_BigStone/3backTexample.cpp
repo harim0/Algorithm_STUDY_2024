@@ -37,6 +37,13 @@ int ex2_prime(int idx, int add_sum){
     if(idx==N) return check_prime(add_sum);
     return ex2_prime(idx+1, add_sum)+ex2_prime(idx+1, add_sum+arr[idx]);
 }
+int max_num = 0;
+void ex3_big(int idx, int add_sum){
+    if(max_num<add_sum) max_num = add_sum;
+    if(idx==N) return;
+    ex3_big(idx+1, add_sum%11);
+    ex3_big(idx+1, (add_sum+arr[idx])%11);
+}
 
 int main(){
     cin>>N;
@@ -48,6 +55,8 @@ int main(){
         cin>>arr[i];
     }
 
-    cout<<ex2_prime(0, 0)<<endl;
+    // cout<<ex2_prime(0, 0)<<endl;
+    ex3_big(0, 0);
+    cout<<max_num<<endl;
     return 0;
 }
