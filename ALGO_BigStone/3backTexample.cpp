@@ -38,14 +38,16 @@ int ex2_prime(int idx, int add_sum){
     return ex2_prime(idx+1, add_sum)+ex2_prime(idx+1, add_sum+arr[idx]);
 }
 int max_num = 0;
+const int mod = 11;
 void ex3_big(int idx, int add_sum){
+    if(max_num==mod-1) return;
     if(idx==N){ 
-        if(max_num<add_sum) max_num = add_sum;
+        if(max_num<add_sum%mod) max_num = add_sum%mod;
         cnt++;
         return;
     }
-    ex3_big(idx+1, add_sum%11);
-    ex3_big(idx+1, (add_sum+arr[idx])%11);
+    ex3_big(idx+1, add_sum);
+    ex3_big(idx+1, (add_sum+arr[idx]));
 }
 
 int main(){
