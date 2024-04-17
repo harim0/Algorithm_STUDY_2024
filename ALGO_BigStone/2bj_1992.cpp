@@ -23,7 +23,7 @@ string QuadTreeZip(int y, int x, int size){
             }
         }
     }
-    return string(1,matrix[y][x]);
+    return string(1,matrix[y][x]); // ㅘ...
 }
 
 // 재귀로 주어진 범위 내 값이 다 동일하면 압축. 아니면 재귀로 Quad
