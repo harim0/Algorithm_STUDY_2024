@@ -23,8 +23,8 @@ int N;
 int arr[100];
 int visited[100];
 int ex2_prime(int idx, int add_sum){
-    visited[idx]=1;
-    add_sum+=arr[idx];
+    // visited[idx]=1;
+    // add_sum+=arr[idx];
     cout<<"num: "<<arr[idx]<<", add_sum: "<<add_sum<<endl;
 
     bool prime = 1;
@@ -35,8 +35,12 @@ int ex2_prime(int idx, int add_sum){
         cout<<"prime!!!"<<endl;
         return 1;
     }
-    for(int i=0; i<N; i++){
-        if(!visited[i]) return ex2_prime(i, add_sum);
+    // for(int i=0; i<N; i++){
+    //     if(!visited[i]) return ex2_prime(i, add_sum);
+    // }
+    if(idx+1<N){
+        ex2_prime(idx+1, add_sum+arr[idx]);
+        ex2_prime(idx+1, add_sum);
     }
     return 0;
 }
@@ -52,11 +56,12 @@ int main(){
     }
 
     int cnt_prime=0;
-    for(int i=0; i<N; i++){
-        // if(!visited[i]) cnt_prime+=ex2_prime(i, 0);
-        memset(visited, 0, sizeof(visited));
-        cnt_prime+=ex2_prime(i, 0);
-    }
+    // for(int i=0; i<N; i++){
+    //     // if(!visited[i]) cnt_prime+=ex2_prime(i, 0);
+    //     memset(visited, 0, sizeof(visited));
+    //     cnt_prime+=ex2_prime(i, 0);
+    // }
+    cnt_prime+=ex2_prime(0, 0);
     cout<<"cnt_prime: "<<cnt_prime<<endl;
     return 0;
 }
