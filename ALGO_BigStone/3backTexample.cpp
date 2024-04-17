@@ -26,13 +26,13 @@ int cnt_prime=0;
 void ex2_prime(int idx, int add_sum){
     // visited[idx]=1;
     // add_sum+=arr[idx];
-    cout<<"num: "<<arr[idx]<<", add_sum: "<<add_sum<<endl;
+    cout<<"idx: "<<idx<<", num: "<<arr[idx]<<", add_sum: "<<add_sum<<endl;
 
     bool prime = 1;
     for(int i=2; i<add_sum; i++){
         if(add_sum%i==0) prime=0;
     }
-    if(add_sum!=0&&prime==1){ 
+    if(add_sum>0&&prime==1){ 
         cout<<"prime!!!"<<endl;
         cnt_prime+=1;
     }
@@ -62,6 +62,7 @@ int main(){
     //     memset(visited, 0, sizeof(visited));
     //     cnt_prime+=ex2_prime(i, 0);
     // }
+    ex2_prime(0, arr[0]);
     ex2_prime(0, 0);
     cout<<"rst: "<<cnt_prime<<endl;
     return 0;
