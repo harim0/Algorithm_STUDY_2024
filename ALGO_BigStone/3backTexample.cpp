@@ -22,28 +22,20 @@ void ex1_rallo(int N){
 int N;
 int arr[100];
 int visited[100];
-int cnt_prime=0;
-void ex2_prime(int idx, int add_sum){
-    // visited[idx]=1;
-    // add_sum+=arr[idx];
-    cout<<"idx: "<<idx<<", num: "<<arr[idx]<<", add_sum: "<<add_sum<<endl;
 
-    bool prime = 1;
-    for(int i=2; i<add_sum; i++){
-        if(add_sum%i==0) prime=0;
+int check_prime(int num){
+    if(num<=1) return 0;
+    if(num==2) return 1;
+    if(num%2==0) return 0;
+    for(int i=2; i*i<=num; i++){
+        if(num%i==0) return 0;
     }
-    if(add_sum>0&&prime==1){ 
-        cout<<"prime!!!"<<endl;
-        cnt_prime+=1;
-    }
-    // for(int i=0; i<N; i++){
-    //     if(!visited[i]) return ex2_prime(i, add_sum);
-    // }
-    if(idx+1<N){
-        ex2_prime(idx+1, add_sum+arr[idx]);
-        ex2_prime(idx+1, add_sum);
-    }
-    // return 0;
+    return 1;
+}
+int ex2_prime(int idx, int add_sum){
+    // cout<<"idx: "<<idx<<", num: "<<arr[idx]<<", add_sum: "<<add_sum<<endl;
+    if(idx==N) return check_prime(add_sum);
+    return ex2_prime(idx+1, add_sum)+ex2_prime(idx+1, add_sum+arr[idx]);
 }
 
 int main(){
@@ -56,14 +48,6 @@ int main(){
         cin>>arr[i];
     }
 
-    // int cnt_prime=0;
-    // for(int i=0; i<N; i++){
-    //     // if(!visited[i]) cnt_prime+=ex2_prime(i, 0);
-    //     memset(visited, 0, sizeof(visited));
-    //     cnt_prime+=ex2_prime(i, 0);
-    // }
-    ex2_prime(0, arr[0]);
-    ex2_prime(0, 0);
-    cout<<"rst: "<<cnt_prime<<endl;
+    cout<<ex2_prime(0, 0)<<endl;
     return 0;
 }
