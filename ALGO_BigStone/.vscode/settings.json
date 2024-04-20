@@ -5,5 +5,8 @@
         "ostream": "cpp",
         "vector": "cpp",
         "queue": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "kruskal"
+    ]
 }
