@@ -43,7 +43,7 @@ void init(){
     edges.push_back(Edge(2,5,62));
     edges.push_back(Edge(3,5,20));
     edges.push_back(Edge(3,6,37));
-    edges.push_back(Edge(4,6,13));
+    edges.push_back(Edge(4,7,13));
     edges.push_back(Edge(5,6,45));
     edges.push_back(Edge(5,7,73));
 
