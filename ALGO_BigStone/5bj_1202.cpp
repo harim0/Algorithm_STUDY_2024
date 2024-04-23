@@ -2,40 +2,30 @@
 
 using namespace std;
 
-int n, k;
-typedef pair<int,int> p;
-
-vector<p> jewry;
-vector<int> bag;
-
-bool compare(const p a, const p b){
-    return a.second>b.second;
-}
+long long n, k;
 
 int main()
 {
     cin >> n >> k;
-    for(int i=0; i<n; i++){
-        int w,p;
-        cin>>w>>p;
-        jewry.push_back({w,p});
-    }
-    for(int i=0; i<k; i++){
-        int maxW;
-        cin>>maxW;
-        bag.push_back(maxW);
-    }
-    int* visited = new int[k]{0,};
-    sort(jewry.begin(), jewry.end(), compare);
+    vector<pair<long long,long long>> jewry(n);
+    vector<long long> bag(k);
 
-    int sum = 0; // priority...가방 개수? 보석?
-    for(int i=0; i<n; i++){
-        for(int j=0; j<k; j++){
-            if((!visited[j])&&jewry[i].first<=bag[j]){
-                visited[j]=1;
-                sum+=jewry[i].second;
-                break;
-            }
+    for(int i=0; i<n; i++)
+        cin>>jewry[i].first>>jewry[i].second;
+    for(int i=0; i<k; i++)
+        cin>>bag[i];
+
+    sort(bag.begin(), bag.end());
+    sort(jewry.begin(), jewry.end());
+
+    priority_queue<long long> pq;
+    long long sum = 0;
+    int j = 0;
+    for(int i=0; i<k; i++){
+        while(j<n&&jewry[j].first<=bag[i]) pq.push(jewry[j++].second);
+        if(pq.size()){
+            sum+=pq.top();
+            pq.pop();
         }
     }
 
