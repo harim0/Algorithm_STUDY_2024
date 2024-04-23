@@ -21,9 +21,11 @@ void dijkstra(int start){
     priority_queue<p, vector<p>, compare> pq;
     pq.push({start,0});
 
+    cout<<"pq pop order: ";
     while(!pq.empty()){
         int cur = pq.top().first;
         int curDist = pq.top().second;
+        cout<<cur<<" ";
         pq.pop();
         if(dist[cur]<curDist) continue; // 최단 거리 아니면
         for(int i=0; i<graph[cur].size(); i++){
@@ -35,6 +37,7 @@ void dijkstra(int start){
             }
         }
     }
+    cout<<"pq empty!\n";
 }
 
 void init(){
