@@ -6,14 +6,13 @@ long long n,m;
 
 int main(){
     cin>>n>>m;
-    long long jewry[m], sum = 0, high = 0;
+    long long jewry[m], high = 0, low = 1;
     for(int i=0; i<m; i++){
         cin>>jewry[i];
         high = max(high, jewry[i]);
-        sum+=jewry[i];
     }
 
-    long long low = sum/n, mid, rst = 1e9, cnt = 0;
+    long long mid, rst = 1e9, cnt = 0;
     while(low<=high){
         mid = (low + high)/2;
         cnt = 0;
