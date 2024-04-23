@@ -86,3 +86,9 @@ int main(){
 
     return 0;
 }
+
+/*
+pq pop order: 1 3 6 2 4 3 6 5 6 3 5 pq empty!
+<1> <2> <3> <4> <5> <6> 
+ 0   2   3   1   2   4  
+ */
