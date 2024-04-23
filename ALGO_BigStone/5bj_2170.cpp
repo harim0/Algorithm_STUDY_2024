@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-
+// umm... tie... stdin...
 using namespace std;
 
 typedef pair<int, int> p;
