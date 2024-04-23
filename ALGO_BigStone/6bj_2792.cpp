@@ -2,32 +2,34 @@
 
 using namespace std;
 
-int n,m;
+long long n,m;
 
 int main(){
     cin>>n>>m;
-    int jewry[m];
-    int sum = 0;
+    long long jewry[m], high = 0, low = 1;
     for(int i=0; i<m; i++){
         cin>>jewry[i];
-        sum+=jewry[i];
+        high = max(high, jewry[i]);
     }
 
-    int k=sum/n;
-    int cnt = 0;
+    long long mid, rst = 1e9, cnt = 0;
     // cout<<"inital k: "<<k<<endl;
-    while(cnt!=n){
+    while(low<=high){
+        mid = (low + high)/2;
         cnt = 0;
         for(int i=0; i<m; i++){
-            cnt+=jewry[i]/k;
-            if(jewry[i]%k>0) cnt++;
+            cnt+=jewry[i]/mid;
+            if(jewry[i]%mid) cnt++;
         }
         // cout<<"cnt: "<<cnt<<endl;
-        if(cnt<n) k--;
-        else if(cnt>n) k++;
-        // cout<<"updated k: "<<k<<endl;
+        if(cnt<=n){ 
+            rst = min(rst, mid);
+            high = mid-1;
+        }
+        else low = mid+1;
+        // cout<<"updated mid: "<<mid<<endl;
     }
-    cout<<k<<"\n";
+    cout<<rst<<"\n";
 
     return 0;
 }
