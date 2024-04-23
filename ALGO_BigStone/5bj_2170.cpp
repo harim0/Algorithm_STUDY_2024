@@ -15,18 +15,23 @@ int main(){
     }
 
     long long dist = 0;
-    p prev = pq.top();
+    long long prevFrom = pq.top().first;
+    long long prevTo = pq.top().second;
     pq.pop();
-    dist+=(prev.second-prev.first);
     while(pq.size()){
         // cout<<">> pq: "<<pq.top().first<<" -to- "<<pq.top().second<<endl;
-        if(prev.second<=pq.top().first){
-            dist+=(pq.top().second-pq.top().first);
-            // cout<<"dist2: "<<dist<<", prev: "<<prev.first<<" -to- "<<prev.second<<endl;
-            prev = pq.top();
+        if(prevTo<pq.top().first){
+            dist+=(prevTo-prevFrom);
+            // cout<<"dist2: "<<dist<<", prev: "<<prevFrom<<" -to- "<<prevTo<<endl;
+            prevFrom = pq.top().first;
+            prevTo = pq.top().second;
+        }else if(pq.top().first<=prevTo&&pq.top().second>=prevTo){
+            // cout<<"dist3: "<<dist<<", prev: "<<prevFrom<<" -to- "<<prevTo<<endl;
+            prevTo = pq.top().second;
         }
         pq.pop();
     }
+    dist+=(prevTo-prevFrom);
     cout<<dist<<"\n";
 
     return 0;
