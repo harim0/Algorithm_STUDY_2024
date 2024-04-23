@@ -5,11 +5,16 @@
 
 using namespace std;
 
-int memo[32003]={0,};
+int memo[32003]={0,}; // 초기값
 
 int solution(int N, int number) {
     int answer = 0;
-    
+    memo[N] = 1;
+    memo[1] = 2;
+
+    for(int i=0; i<number; i++){
+        
+    }
     return answer;
 }
 // 사칙연산이면 +, -, *, /

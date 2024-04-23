@@ -1,2 +1,3 @@
-BJ/DP/a.out
-Programmers/a.out
+*.out
+.vscode/*
+*.md
