@@ -2,34 +2,30 @@
 
 using namespace std;
 
-typedef pair<long long, long long> p;
+typedef pair<int, int> p;
 int n;
-
+p arr[1000004];
 int main(){
     cin>>n;
-    priority_queue<p, vector<p>, greater<p>> pq;
     for(int i=0; i<n; i++){
-        long long x,y;
-        cin>>x>>y;
-        pq.push({x,y});
+        cin>>arr[i].first>>arr[i].second;
     }
+    sort(arr, arr+n);
 
-    long long dist = 0;
-    long long prevFrom = pq.top().first;
-    long long prevTo = pq.top().second;
-    pq.pop();
-    while(pq.size()){
-        // cout<<">> pq: "<<pq.top().first<<" -to- "<<pq.top().second<<endl;
-        if(prevTo<pq.top().first){
+    int dist = 0;
+    int prevFrom = arr[0].first;
+    int prevTo = arr[0].second;
+    for(int i=1; i<n; i++){
+        // cout<<">> arr: "<<arr[i].first<<" -to- "<<arr[i].second<<endl;
+        if(prevTo<arr[i].first){
             dist+=(prevTo-prevFrom);
             // cout<<"dist2: "<<dist<<", prev: "<<prevFrom<<" -to- "<<prevTo<<endl;
-            prevFrom = pq.top().first;
-            prevTo = pq.top().second;
-        }else if(pq.top().first<=prevTo&&pq.top().second>=prevTo){
+            prevFrom = arr[i].first;
+            prevTo = arr[i].second;
+        }else if(arr[i].first<=prevTo&&arr[i].second>=prevTo){
             // cout<<"dist3: "<<dist<<", prev: "<<prevFrom<<" -to- "<<prevTo<<endl;
-            prevTo = pq.top().second;
+            prevTo = arr[i].second;
         }
-        pq.pop();
     }
     dist+=(prevTo-prevFrom);
     cout<<dist<<"\n";
