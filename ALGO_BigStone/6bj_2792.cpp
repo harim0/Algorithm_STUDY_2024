@@ -6,14 +6,14 @@ long long n,m;
 
 int main(){
     cin>>n>>m;
-    long long jewry[m], high = 0, low = 1;
+    long long jewry[m], sum = 0, high = 0;
     for(int i=0; i<m; i++){
         cin>>jewry[i];
         high = max(high, jewry[i]);
+        sum+=jewry[i];
     }
 
-    long long mid, rst = 1e9, cnt = 0;
-    // cout<<"inital k: "<<k<<endl;
+    long long low = sum/n, mid, rst = 1e9, cnt = 0;
     while(low<=high){
         mid = (low + high)/2;
         cnt = 0;
@@ -21,13 +21,11 @@ int main(){
             cnt+=jewry[i]/mid;
             if(jewry[i]%mid) cnt++;
         }
-        // cout<<"cnt: "<<cnt<<endl;
         if(cnt<=n){ 
             rst = min(rst, mid);
             high = mid-1;
         }
         else low = mid+1;
-        // cout<<"updated mid: "<<mid<<endl;
     }
     cout<<rst<<"\n";
 
