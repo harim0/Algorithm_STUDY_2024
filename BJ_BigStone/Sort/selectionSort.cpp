@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-// Selection Sort: 첫번째, 두번째...부터 끝까지 훑어서 최소값을 찾아 앞으로 옮긴다
+// Selection Sort: 최소 원소를 선택하여 정렬되지 않은 부분 배열의 시작으로 이동
 
 const int n = 10;
 
