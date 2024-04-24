@@ -1,8 +1,11 @@
 #include <iostream>
 using namespace std;
 
-const int n = 10;
-int heap[n] = {16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
+const int n = 15;
+int heap[n] = {1,3,5,7,9,11,13,15,14,12,10,8,6,4,2};
+// int heap[n] = {16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
+
+// 배열을 최대 힙으로 구성하고, 루트(가장 큰 값)를 반복적으로 배열의 끝으로 옮기는(삭제) 과정을 통해 정렬 INPLACE
 
 void maxHeapify(int i, int size) {
     int l=2*i+1;
@@ -26,8 +29,8 @@ void buildMAXHeap() {
 void heapSort() {
     buildMAXHeap();
     for (int i=n-1; i>0; i--) {
-        swap(heap[0], heap[i]);
         maxHeapify(0, i);
+        swap(heap[0], heap[i]);
     }
 }
 
