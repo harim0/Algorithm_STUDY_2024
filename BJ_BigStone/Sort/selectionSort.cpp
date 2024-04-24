@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-// Selection Sort: 가장 작은 것 선택해서 제일 앞으로 보낸다.
+// Selection Sort: 첫번째, 두번째...부터 끝까지 훑어서 최소값을 찾아 앞으로 옮긴다
+
 int main(){
     int arr[10] = {1,10,5,8,7,6,4,3,2,9}; 
     for(int i=0; i<10; i++){
