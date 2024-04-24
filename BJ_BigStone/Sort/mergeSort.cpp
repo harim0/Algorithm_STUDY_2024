@@ -7,25 +7,27 @@ int arr[n] = {1,10,5,8,7,6,4,3,2,9};
 int sorted[n];
 
 void merge(int start, int mid, int end){
-    int i=mid, j=mid+1, k=end;
-    while(i<=mid&&j<=end){
-        if(arr[i]<=arr[j]){
-            sorted[k] = arr[j];
-            i++;
-        }else{
-            sorted[k] = arr[j];
-            j++;
-        }
-        k++;
-    }
-    if(i>mid){
-        for(int t=i; t<=mid; t++){
+    int i=start, j=mid+1, k=start;
 
+    while(i <= mid && j <= end){
+        if(arr[i] <= arr[j]){
+            sorted[k++] = arr[i++];
+        }else{
+            sorted[k++] = arr[j++];
         }
-    }else{
-        for(int t=)
     }
-    for(int t) arr[t] = 
+
+    while(i <= mid){
+        sorted[k++] = arr[i++];
+    }
+
+    while(j <= end){
+        sorted[k++] = arr[j++];
+    }
+
+    for(int t = start; t <= end; t++){
+        arr[t] = sorted[t];
+    }
 }
 
 void mergeSort(int start, int end){
