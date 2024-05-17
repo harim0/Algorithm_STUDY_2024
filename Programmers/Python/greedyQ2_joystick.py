@@ -17,8 +17,9 @@ def solution(name):
 
 
 # 역방향 업데이트 고려 X ... 알파벳 만드는 횟수와 이동 횟수 분리
-print(solution("BBABAAAAAAB"))
-# print(solution("BBAB(3)AAAAAA(9)B")) # <-- 9? 11 아냐? // 4, 7(->3 <-4) // len=11 (A 6)
+print(solution("BBABAAAAAAB")) # <--- 역방향 먼저 이동 1(n-next_i)+1(n-next_i)+3(i)
+# print(solution("BBAB(3)AAAAAA(9)B")) # <-- *** 9? 11 아냐? // 4, 7(->3 <-4) // len=11 (A 6)
+print()
 print(solution("BBAAAAAAABAB")) 
 # print(solution("BB(1)AAAAAAA(8)BAB")) # <-- 9 // 4, 5(->1 <-4(2,2)) // len=12 (A 7)
 print(solution("BBAAAAABB"))
