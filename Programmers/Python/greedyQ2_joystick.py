@@ -1,15 +1,22 @@
 def solution_fail(name): # runtime Error
-    answer, i=0
+    answer=0
+    i=0
     alpha = 26
     prev_state = name[0]
     while i!=len(name):
         cnt = 0
-        if name[i]=='A':    
+        if name[i]=='A': # A O
             while name[i]=='A':
                 cnt+=1
                 prev_state = name[i]
+                if i==len(name)-1:
+                    break
                 i+=1
-            cnt+=1
+            if name[i]!='A':
+                cnt+=1
+            else:
+                cnt=0
+                i+=1
             if cnt>0 and cnt<len(name)-cnt:
                 answer+=cnt
             elif cnt>0:
@@ -25,6 +32,8 @@ def solution_fail(name): # runtime Error
             i+=1
     return answer
 
-# print(solution("JEROEN"))
-# print(solution("JAN"))
-# print(solution("JAAAAON"))
+print(solution_fail("AAAAAA"))
+print(solution_fail("AAADAAA"))
+print(solution_fail("JEROEN"))
+print(solution_fail("JAN"))
+print(solution_fail("JAAAAON"))
