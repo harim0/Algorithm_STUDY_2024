@@ -1,46 +1,15 @@
-# def solution_fail(number, k):
-#     answer = ''
-#     if number[k]>max(list(number[:k])):
-#         answer = number[k:]
-#     else:
-#         number = list(number)
-#         i=0
-#         while i<len(number)-1:
-#             next_i = i+1
-#             if k==0:
-#                 break
-#             elif k>0 and number[i]<number[next_i]:
-#                 del number[i]
-#                 k-=1
-#                 i=0
-#             else:
-#                 i+=1
-#         while k>0:
-#             number.pop()
-#             k-=1
-#         answer=''.join(map(str,number))
-#     return answer
-
 def solution(number, k):
-    answer = ''
-    i=0
-    while i<len(number)-1:
-        if number[i]=='9':
-            i+=1
-            continue
-        elif k==0:
-            break
-        elif k>0 and number[i]<number[i+1]:
-            number=number[:i]+number[i+1:]
-            k-=1
-            i=0
-        else:
-            i+=1
-    answer = number
-    while k>0:
-        answer = number[:len(number)-1]
-        k-=1
-    return answer
+    stack = []
+    for num in number:
+        while k > 0 and stack and stack[-1] < num:
+            stack.pop()
+            k -= 1
+        stack.append(num)
+    
+    if k > 0:
+        stack = stack[:-k]
+    return ''.join(stack)
+
 
 # print(solution("1924",2))
 # print(solution("1231234",3))
