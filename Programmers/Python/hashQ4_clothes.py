@@ -1,3 +1,11 @@
+def is_empty(arr):
+    if not arr:
+        return True
+    for sub_arr in arr:
+        if sub_arr:
+            return False
+    return True
+
 def numOfcases(hash_map, k):
     result = 0
     
@@ -17,6 +25,9 @@ def solution(clothes):
     hash_map = {}
     cloth_types = {}
     
+    if is_empty(clothes):
+        return 0
+    
     for cloth in clothes:
         cloth_type = cloth[1]
         if cloth_type not in cloth_types:
@@ -33,3 +44,4 @@ def solution(clothes):
 
 print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]]))
 print(solution([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]))
+print(solution([[]]))
