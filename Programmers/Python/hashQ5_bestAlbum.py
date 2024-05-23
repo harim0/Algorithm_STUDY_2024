@@ -7,6 +7,7 @@ def solution(genres, plays):
     for genre, play in zip(genres,plays):
         album_list[genre]+=play
     album_list = sorted(album_list.items(), key=lambda items: items[1], reverse=True)
+    # 불필요한 형변환 할 필요 없이. zip과 enumerate 사용. extend 사용.
     
     for genre,_  in album_list:
         tmp_album = [(play, i) for i, (g, play) in enumerate(zip(genres, plays)) if g==genre]
