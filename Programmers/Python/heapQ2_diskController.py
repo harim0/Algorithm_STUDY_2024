@@ -24,11 +24,16 @@ def solution(jobs):
                 job_time, req_time=heapq.heappop(scheduler)
                 answer+=abs(time-req_time)+job_time
                 time+=job_time
+                while jobs and time>jobs[0][0]: #... per each 1 task -> need check again (time changes after 1 task)
+                    req_time, job_time=heapq.heappop(jobs)
+                    heapq.heappush(scheduler,(job_time, req_time))
                 # print('\t\ttime:',time)
-    answer=int(answer/n)
+    answer=answer//n
         
     return answer
 
+print(solution([[0, 10], [4, 10], [15, 2], [5, 11]])) # 15
+print(solution([[24, 10], [28, 39], [43, 20], [37, 5], [47, 22], [20, 47], [15, 34], [15, 2], [35, 43], [26, 1]])) # 72
 print(solution([[1, 4], [7, 9], [1000, 3]])) # 5
 print(solution([[7, 8], [3, 5], [9, 6]])) # 9
 print(solution([[0, 3], [10, 1]])) # 2
