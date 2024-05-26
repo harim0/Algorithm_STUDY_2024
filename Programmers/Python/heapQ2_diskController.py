@@ -7,30 +7,20 @@ def solution(jobs):
     heapq.heapify(jobs) # req_time 순
     # print('heapify => ', jobs)
     
-    while jobs:
-        if time<=jobs[0][0]: # 작업 X (req_time >= time) :: req_time 순
+    ready_queue = []
+    while jobs or ready_queue:
+        while jobs and time>=jobs[0][0]:  # 작업 중 요청된 작업들 :: job_time 순
             req_time, job_time=heapq.heappop(jobs)
-            # print('pop: (',req_time,',',job_time,')')
-            answer+=job_time 
-            time+=abs(req_time-time)+job_time
-            # print('\t\ttime:',time)
-        else: # 작업 중 요청된 작업들 :: job_time 순
-            scheduler = []
-            while jobs and time>jobs[0][0]: 
-                req_time, job_time=heapq.heappop(jobs)
-                heapq.heappush(scheduler,(job_time, req_time))
-            # print('heap => ', scheduler)
-            while scheduler:
-                job_time, req_time=heapq.heappop(scheduler)
-                answer+=abs(time-req_time)+job_time
-                time+=job_time
-                while jobs and time>jobs[0][0]: #... per each 1 task -> need check again (time changes after 1 task)
-                    req_time, job_time=heapq.heappop(jobs)
-                    heapq.heappush(scheduler,(job_time, req_time))
-                # print('\t\ttime:',time)
-    answer=answer//n
+            heapq.heappush(ready_queue,(job_time, req_time))
+            
+        if ready_queue: 
+            job_time, req_time=heapq.heappop(ready_queue)
+            time+=job_time 
+            answer+=time-req_time
+        else: 
+            time = jobs[0][0]
         
-    return answer
+    return answer//n
 
 print(solution([[0, 10], [4, 10], [15, 2], [5, 11]])) # 15
 print(solution([[24, 10], [28, 39], [43, 20], [37, 5], [47, 22], [20, 47], [15, 34], [15, 2], [35, 43], [26, 1]])) # 72
