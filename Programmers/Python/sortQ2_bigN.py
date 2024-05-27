@@ -19,7 +19,7 @@ def solution(numbers):
         answer+=num_list.pop()[1]
     return str(int(answer))
 
-# def solution(numbers):
+# def solution(numbers): # yamae
 #     answer = ''
 #     numbers = list(map(str, numbers))
 #     num_list = []
