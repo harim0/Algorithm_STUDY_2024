@@ -1,3 +1,4 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/42839/solution_groups?language=python3
 memoization = set()
 def check_prime(num):
     if num<=1:
