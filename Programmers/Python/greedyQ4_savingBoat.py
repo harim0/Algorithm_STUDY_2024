@@ -1,20 +1,18 @@
+# 고심이 -> TWO POINTER with GPT
 def solution(people, limit):
     answer = 0
-    n = len(people)
     people.sort()
+    start, end = 0, len(people)-1
     
-    initial_w = people[0]
-    for i in range(1,n):
-        initial_w+=people[i]
-        if initial_w>limit:
-            answer+=1
-            initial_w=people[i]
-        if initial_w and i==n-1:
-            return answer+1
+    while start<=end:
+        if people[start]+people[end]<=limit:
+            start += 1
+        end -= 1
+        answer += 1
+
     return answer
             
 
-print(solution([70, 50, 80, 50], 100)) # 3
-print(solution([20, 60, 70, 80, 30], 100)) # 3
-print(solution([70, 80, 50], 100)) # 3
-print(solution([70, 80, 50, 50, 100, 90, 20, 20, 20, 30], 100)) # 6
+print(solution([70, 50, 80, 50], 100)) # 50 50 70 80 => 3
+print(solution([20, 60, 70, 80, 30], 100)) # 20 30 60 70 80 => 3
+print(solution([70, 80, 50], 100)) # 50 70 80 => 3
