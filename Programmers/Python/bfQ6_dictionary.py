@@ -1,4 +1,4 @@
-
+# answer += (5 ** (5 - i) - 1) / (5 - 1) * "AEIOU".index(n) + 1
 def solution(word):
     answer = 0
     vowel = {'A': 1, 'E': 2, 'I': 3, 'O': 4, 'U': 5}    
