@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-def dfs(node, graph, visited):
+def bfs(node, graph, visited):
     cnt = 0
     stack = [node]
     while stack:
@@ -23,7 +23,7 @@ def solution(n, wires):
             graph[x].append(y)
             graph[y].append(x)
         visited = [False]*(n+1)
-        first_cnt = dfs(1, graph, visited)
+        first_cnt = bfs(1, graph, visited)
         second_cnt = n-first_cnt
         if abs(second_cnt-first_cnt)<answer:
             answer = abs(second_cnt-first_cnt)
