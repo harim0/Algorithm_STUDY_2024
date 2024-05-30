@@ -5,5 +5,8 @@
         "vector": "cpp",
         "cmath": "cpp"
     },
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "cSpell.words": [
+        "Heapify"
+    ]
 }
