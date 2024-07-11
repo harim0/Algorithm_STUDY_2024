@@ -1,26 +1,20 @@
-def dp(idx, n, memo, money, first):
-    if idx>=n or (idx==n-1 and first):
-        return 0
-    ret = memo[first][idx]
-    if ret!=-1:
-        return ret
-    if idx==0:
-        first = 1
-    ret = max(ret, money[idx]+dp(idx+2, n, memo, money, first))
-    print('1 memo['+str(idx)+']['+str(first)+'] = ',ret)
-    if idx == 0:
-        first = 0
-    ret = max(ret, dp(idx+1, n, memo, money, first))
-    print('\t2 memo['+str(idx)+']['+str(first)+'] = ',ret)
-    memo[first][idx] = ret
-    return ret
+def dp(n, money):
+    if n==0:
+        return money[0]
+    if n==1:
+        return max(money[0], money[1])
+    dp_table = [0]*n
+    dp_table[0] = money[0]
+    dp_table[1] = max(money[0], money[1])
+    
+    for i in range(2, n):
+        dp_table[i] = max(dp_table[i-1], money[i]+dp_table[i-2])
+    return dp_table[n-1]
 
 def solution(money):
-    print('problem = ',money)
     n = len(money)
-    memo = [[-1] * n for _ in range(2)]
-    answ = dp(0, n, memo, money, 0)
-    print('memo = ',memo)
-    return answ
+    if n==1:
+        return money[0]
+    return max(dp(n-1, money[:-1]), dp(n-1, money[1:]))
 
 print(solution([1, 2, 3, 1]))
