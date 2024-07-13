@@ -1,3 +1,10 @@
+/*
+4
+0 10 15 20
+5 0 9 10
+6 13 0 12
+8 8 9 0
+*/
 #include<iostream>
 #include<cstring>
 
@@ -8,8 +15,9 @@ int dt[1<<16][16];
 int n;
 
 int tsp(int curr, int visited){
-    // cout << "visited: " << bitset<16>(visited).to_string().substr(16-n) << " (curr: "<<curr<<")"<<endl;
+    cout << "visited: " << bitset<16>(visited).to_string().substr(16-n) << " (curr: "<<curr<<")"<<endl;
     if(visited==(1<<n)-1){
+        cout<<endl;
         return w[curr][0]?w[curr][0]:1e9;
     }
     if(dt[visited][curr]!=-1){
