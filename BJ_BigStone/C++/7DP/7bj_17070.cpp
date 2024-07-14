@@ -6,10 +6,11 @@ using namespace std;
 
 int n;
 int h[16][16]={-1,};
-
 vector<pair<int, int>> moving = {{0,1},{1,0},{1,1}};
+// int calls = 0;
 
 int cnt_possible(int y, int x, int dir){
+    // calls++;
     if(y==n-1&&x==n-1) return 1;
     int cnt = 0;
     for(int i=0; i<3; i++){
@@ -31,6 +32,7 @@ int main(){
             cin>>h[i][j];
 
     cout<<cnt_possible(0, 1, 0)<<endl;
+    // cout<<calls<<endl;
 
     return 0;
 }
