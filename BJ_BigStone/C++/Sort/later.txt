@@ -1,4 +1,0 @@
-radix sort
-bucket sort
-counting sort
-shell sort

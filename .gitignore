@@ -1,7 +1,6 @@
 *.out
 *.md
-BJ_BigStone/DP/a.out
-BJ_BigStone/Sort/a.out
-BJ_BigStone/a.out
+BJ_BigStone/*/a.out
+*/a.out
 Programmers/a.out
 .DS_Store

@@ -11,7 +11,8 @@
         "bitset": "cpp",
         "utility": "cpp",
         "tuple": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "string": "cpp"
     },
     "cSpell.words": [
         "kruskal",
