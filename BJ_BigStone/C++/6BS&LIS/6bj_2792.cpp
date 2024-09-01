@@ -26,12 +26,10 @@ int main(){
     // long long mid, rst = 1e9, cnt = 0;
     // while(low<=high){
     //     mid = (low+high)/2;
-    //     // cout<<"low: "<<low<<", high: "<<high<<", mid: "<<mid;
     //     for(int j=0;j<m;j++){
     //         cnt+=jewry[j]/mid;
     //         if(jewry[j]%mid) cnt+=1;
     //     }
-    //     // cout<<", cnt = "<<cnt<<endl;
     //     if(cnt<n){ // 학생 수가 작다는 것은 최대 보석 수가 너무 크다는 것 -> 문제
     //         high = mid-1;
     //     }else if(cnt>n){ // 학생 수가 크다는 것은 최대 보석 수가 너무 작다는 것 -> 문제
@@ -44,44 +42,40 @@ int main(){
     // }
     
     //  wrong answer 2
-    long long mid, rst = 1e9, cnt = 0;
-    while(low<=high){
-        mid = (low+high)/2;
-        // cout<<"low: "<<low<<", high: "<<high<<", mid: "<<mid;
-        for(int j=0;j<m;j++){
-            cnt+=jewry[j]/mid;
-            if(jewry[j]%mid) cnt+=1;
-        }
-        // cout<<", cnt = "<<cnt<<endl;
-        if(cnt>=n){ 
-            low = mid+1;
-            rst = min(rst, mid);
-        }else{ 
-            high = mid-1;
-        }
-        cnt = 0;
-    }
-    cout<<rst<<"\n";
-    
-    // correct answer
     // long long mid, rst = 1e9, cnt = 0;
     // while(low<=high){
     //     mid = (low+high)/2;
-    //     // cout<<"low: "<<low<<", high: "<<high<<", mid: "<<mid;
     //     for(int j=0;j<m;j++){
     //         cnt+=jewry[j]/mid;
     //         if(jewry[j]%mid) cnt+=1;
     //     }
-    //     // cout<<", cnt = "<<cnt<<endl;
-    //     if(cnt<=n){ // 학생 수가 작다는 것은 최대 보석 수가 너무 크다는 것 -> 문제
-    //         high = mid-1;
-    //         rst = min(rst, mid);
-    //     }else{ // 학생 수가 크다는 것은 최대 보석 수가 너무 작다는 것 -> 문제
+    //     if(cnt>=n){ 
     //         low = mid+1;
+    //         rst = min(rst, mid);
+    //     }else{ 
+    //         high = mid-1;
     //     }
     //     cnt = 0;
     // }
     // cout<<rst<<"\n";
+    
+    // correct answer
+    long long mid, rst = 1e9, cnt = 0;
+    while(low<=high){
+        mid = (low+high)/2;
+        for(int j=0;j<m;j++){
+            cnt+=jewry[j]/mid;
+            if(jewry[j]%mid) cnt+=1;
+        }
+        if(cnt<=n){
+            high = mid-1;
+            rst = min(rst, mid);
+        }else{ 
+            low = mid+1;
+        }
+        cnt = 0;
+    }
+    cout<<rst<<"\n";
 
     return 0;
 }
